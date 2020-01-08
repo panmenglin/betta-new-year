@@ -1,0 +1,76 @@
+2020-01-08T03:07:31.709Z - normal: Load ~/.CocosCreator/settings.json
+2020-01-08T03:07:31.764Z - normal: Initializing Asset Database
+2020-01-08T03:07:31.766Z - normal: checking language setting...
+2020-01-08T03:07:31.766Z - normal: Language: zh
+2020-01-08T03:07:32.166Z - success: preview server running at http://localhost:7456
+2020-01-08T03:07:32.179Z - success: protocol editor-framework registered
+2020-01-08T03:07:32.180Z - success: protocol app registered
+2020-01-08T03:07:32.180Z - success: protocol theme registered
+2020-01-08T03:07:32.180Z - success: protocol packages registered
+2020-01-08T03:07:32.180Z - success: protocol uuid registerred
+2020-01-08T03:07:32.180Z - success: protocol db registerred
+2020-01-08T03:07:32.180Z - success: protocol thumbnail registerred
+2020-01-08T03:07:32.180Z - success: protocol unpack registerred
+2020-01-08T03:07:32.181Z - success: protocol disable-commonjs registerred
+2020-01-08T03:07:32.293Z - normal: connected!
+2020-01-08T03:07:32.294Z - normal: Check project /Users/icourt/Downloads/start_project
+2020-01-08T03:07:32.296Z - normal: Initializing project /Users/icourt/Downloads/start_project
+2020-01-08T03:07:32.320Z - success: adapters loaded
+2020-01-08T03:07:32.325Z - success: asset-db-debugger loaded
+2020-01-08T03:07:32.384Z - success: fb-audience-network loaded
+2020-01-08T03:07:32.405Z - success: fb-live-stream loaded
+2020-01-08T03:07:32.407Z - success: google-play-instant loaded
+2020-01-08T03:07:32.413Z - success: huawei-runtime loaded
+2020-01-08T03:07:32.414Z - success: jkw-adapter loaded
+2020-01-08T03:07:32.415Z - success: jsb-adapter loaded
+2020-01-08T03:07:32.420Z - success: oppo-runtime loaded
+2020-01-08T03:07:32.424Z - success: package-manager loaded
+2020-01-08T03:07:32.425Z - success: qtt-adapter loaded
+2020-01-08T03:07:32.429Z - success: runtime-dev-tools loaded
+2020-01-08T03:07:32.436Z - success: sdkbox loaded
+2020-01-08T03:07:32.440Z - success: ui-kit-preview-extra loaded
+2020-01-08T03:07:32.445Z - success: ui-kit-preview loaded
+2020-01-08T03:07:32.451Z - success: vivo-runtime loaded
+2020-01-08T03:07:32.452Z - success: alipay-minigame loaded
+2020-01-08T03:07:32.502Z - success: assets loaded
+2020-01-08T03:07:32.505Z - success: baidugame-opendata loaded
+2020-01-08T03:07:32.508Z - success: baidugame loaded
+2020-01-08T03:07:32.516Z - success: builder loaded
+2020-01-08T03:07:32.647Z - success: cocos-services loaded
+2020-01-08T03:07:32.651Z - success: console loaded
+2020-01-08T03:07:32.660Z - success: fb-instant-games loaded
+2020-01-08T03:07:32.663Z - success: game-window loaded
+2020-01-08T03:07:32.664Z - success: google-instant-games loaded
+2020-01-08T03:07:32.671Z - success: hierarchy loaded
+2020-01-08T03:07:32.676Z - success: inspector loaded
+2020-01-08T03:07:32.956Z - success: cpk-publish loaded
+2020-01-08T03:07:32.957Z - success: keystore loaded
+2020-01-08T03:07:32.963Z - success: node-library loaded
+2020-01-08T03:07:32.964Z - success: open-recent-items loaded
+2020-01-08T03:07:32.965Z - success: package-asset loaded
+2020-01-08T03:07:32.966Z - success: preferences loaded
+2020-01-08T03:07:32.969Z - success: project-exporter loaded
+2020-01-08T03:07:32.973Z - success: project-importer loaded
+2020-01-08T03:07:32.978Z - success: project-settings loaded
+2020-01-08T03:07:32.989Z - success: qtt-runtime loaded
+2020-01-08T03:07:32.993Z - success: scene loaded
+2020-01-08T03:07:32.994Z - success: simulator-debugger loaded
+2020-01-08T03:07:32.995Z - success: sprite-editor loaded
+2020-01-08T03:07:32.999Z - success: store loaded
+2020-01-08T03:07:33.003Z - success: timeline loaded
+2020-01-08T03:07:33.005Z - success: wechatgame-opendata loaded
+2020-01-08T03:07:33.009Z - success: wechatgame loaded
+2020-01-08T03:07:33.011Z - success: xiaomi-runtime loaded
+2020-01-08T03:07:34.021Z - normal: Initializing Cocos2d
+2020-01-08T03:07:34.430Z - normal: Initializing engine extends
+2020-01-08T03:07:34.673Z - info: Cocos Service load base data!
+2020-01-08T03:07:38.279Z - normal: Loading packages
+2020-01-08T03:07:38.284Z - normal: Watching packages
+2020-01-08T03:07:38.383Z - normal: Run Application
+2020-01-08T03:20:56.168Z - success: VS Code extension installed to /Users/icourt/.vscode/extensions
+2020-01-08T03:48:00.628Z - failed: Failed to drop asset db://assets/game.fire, message: Error: Can not create node from cc.SceneAsset
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/scene-utils/utils/node.js:1:5122
+    at CCLoader.<anonymous> (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCAssetLibrary.js:66:25)
+    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/load-pipeline/CCLoader.js:141:46
+    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/utils.js:49:25
+    at processTicksAndRejections (internal/process/task_queues.js:79:9)
