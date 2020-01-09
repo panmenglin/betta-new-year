@@ -49,7 +49,7 @@ cc.Class({
         // this.jumpAction = this.setJumpAction();
         // this.node.runAction(this.jumpAction);
         this.jumpCount = 0
-        console.log(this.node.y)
+
 
         // 加速度方向开关
         this.accLeft = false;
@@ -80,7 +80,9 @@ cc.Class({
         }
 
         // 根据当前速度更新主角的位置
-        this.node.x += this.xSpeed * dt;
+        if (this.node.x + this.xSpeed * dt > (-0.5 * cc.visibleRect.width + 0.5 * this.node.width) && this.node.x + this.xSpeed * dt < 0.5 * cc.visibleRect.width - 0.5 * this.node.width) {
+            this.node.x += this.xSpeed * dt;
+        }
     },
 
     onDestroy () {

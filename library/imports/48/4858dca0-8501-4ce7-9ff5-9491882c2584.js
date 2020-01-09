@@ -1,8 +1,8 @@
 "use strict";
-cc._RF.push(module, 'c8fd1eJi1BEiqF/1coYpWJp', 'star');
-// scripts/star.js
+cc._RF.push(module, '4858dyghQFM55/1lJGILCWE', 'obstacle');
+// scripts/obstacle.js
 
-'use strict';
+"use strict";
 
 // Learn cc.Class:
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
@@ -18,8 +18,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // 星星和主角之间的距离小于这个数值时，就会完成收集
-        pickRadius: 0,
         // foo: {
         //     // ATTRIBUTES:
         //     default: null,        // The default value will be used only when the component attaching
@@ -35,7 +33,7 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        speed: 100
+        collisionRadius: 20
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -46,7 +44,7 @@ cc.Class({
     start: function start() {},
     update: function update(dt) {
         // 每帧判断和主角之间的距离是否小于收集距离
-        if (this.getPlayerDistance() < this.pickRadius) {
+        if (this.getPlayerDistance() < this.collisionRadius) {
             // 调用收集行为
             this.onPicked();
             return;
@@ -58,7 +56,8 @@ cc.Class({
     },
 
     move: function move() {
-        var move = this.moveAction('easeCubicActionOut');
+
+        var move = this.moveAction();
         var callback = cc.callFunc(this.moveCallback, this);
 
         var moveAction = cc.sequence(move, callback);
@@ -66,22 +65,13 @@ cc.Class({
     },
     // 生成随机运动轨迹动画
     moveAction: function moveAction(type) {
-        var _this = this;
-        var time = cc.visibleRect.width / this.speed;
+        var time = cc.visibleRect.width / this.game.bgSpeed;
         var target = {
             x: -cc.visibleRect.width - this.node.width,
-            y: this.node.y - this.node.height / 2
+            y: 0
         };
 
-        var action = cc.moveBy(time, cc.v2(target.x, target.y));
-
-        var easeType = ['easeCubicActionOut'];
-
-        if (easeType.indexOf(type) < 0) {
-            return action;
-        }
-
-        return action.easing(cc[type]());
+        return cc.moveBy(time, cc.v2(target.x, target.y));
     },
     moveCallback: function moveCallback() {
         this.node.destroy();
@@ -91,13 +81,14 @@ cc.Class({
         var playerPos = this.game.player.getPosition();
         // 根据两点位置计算两点之间距离
         var dist = this.node.position.sub(playerPos).mag();
+        console.log(dist);
+
         return dist;
     },
+
     onPicked: function onPicked() {
         // 当星星被收集时，调用 Game 脚本中的接口，生成一个新的星星
-        this.game.spawnNewStar();
-        // 调用 Game 脚本的得分方法
-        this.game.gainScore();
+        this.game.spawnNewObstacle();
         // 然后销毁当前星星节点
         this.node.destroy();
     }

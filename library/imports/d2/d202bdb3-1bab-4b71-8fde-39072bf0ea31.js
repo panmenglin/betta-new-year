@@ -23,6 +23,11 @@ cc.Class({
             default: null,
             type: cc.Prefab
         },
+        // 这个属性引用了星星预制资源
+        obstaclePrefab: {
+            default: null,
+            type: cc.Prefab
+        },
         // 星星产生后消失时间的随机范围
         maxStarDuration: 0,
         minStarDuration: 0,
@@ -48,14 +53,21 @@ cc.Class({
         },
         bg1: null,
         bg2: null,
+        // 当前背景
         curBg: null,
-        bgSpeed: 10
+        gd1: null,
+        gd2: null,
+        // 当前背景
+        curGd: null,
+        // 背景移动速度
+        bgSpeed: 100
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad: function onLoad() {
         // this.score = 0;
+        this.player.getComponent('player').game = this;
 
         // 获取地平面的 y 轴坐标
         this.groundY = this.ground.y + this.ground.height / 2;
@@ -71,9 +83,15 @@ cc.Class({
         // 初始化计分
         this.score = 0;
 
+        this.spawnNewObstacle();
+
         this.bg1 = this.node.getChildByName('background1');
         this.bg2 = this.node.getChildByName('background2');
-        this.cur_bg = this.bg1;
+        this.curBg = this.bg1;
+
+        this.gd1 = this.node.getChildByName('ground1');
+        this.gd2 = this.node.getChildByName('ground2');
+        this.curGd = this.gd1;
 
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEndCallback, this, true);
     },
@@ -89,14 +107,28 @@ cc.Class({
         this.bg1.x -= s;
         this.bg2.x -= s;
 
-        if (this.cur_bg.x <= -1360) {
+        if (this.curBg.x <= -1360) {
             // 地图切换
-            if (this.cur_bg == this.bg2) {
+            if (this.curBg == this.bg2) {
                 this.bg2.x = this.bg1.x + 1360;
-                this.cur_bg = this.bg1;
+                this.curBg = this.bg1;
             } else {
                 this.bg1.x = this.bg2.x + 1360;
-                this.cur_bg = this.bg2;
+                this.curBg = this.bg2;
+            }
+        }
+
+        this.gd1.x -= s;
+        this.gd2.x -= s;
+
+        if (this.curGd.x <= -1360) {
+            // 地图切换
+            if (this.curGd == this.gd2) {
+                this.gd2.x = this.gd1.x + 1360;
+                this.curGd = this.gd1;
+            } else {
+                this.gd1.x = this.gd2.x + 1360;
+                this.curGd = this.gd2;
             }
         }
     },
@@ -105,24 +137,48 @@ cc.Class({
     spawnNewStar: function spawnNewStar() {
         // 使用给定的模板在场景中生成一个新节点
         var newStar = cc.instantiate(this.starPrefab);
-        // 将新增的节点添加到 Canvas 节点下面
-        this.node.addChild(newStar);
+
         // 为星星设置一个随机位置
         newStar.setPosition(this.getNewStarPosition());
-
         newStar.getComponent('star').game = this;
+
+        // 将新增的节点添加到 Canvas 节点下面
+        this.node.addChild(newStar);
 
         this.starDuration = this.minStarDuration + Math.random() * (this.maxStarDuration - this.minStarDuration);
         this.timer = 0;
     },
-
     getNewStarPosition: function getNewStarPosition() {
         var randX = 0;
         // 根据地平面位置和主角跳跃高度，随机得到一个星星的 y 坐标
         var randY = this.groundY + Math.random() * this.player.getComponent('player').jumpHeight + 50;
         // 根据屏幕宽度，随机得到一个星星 x 坐标
-        var maxX = this.node.width / 2;
-        randX = (Math.random() - 0.5) * 2 * maxX;
+        // var maxX = this.node.width;
+        // randX = (Math.random() - 0.5) * 2 * maxX;
+        randX = this.node.width / 2;
+        // 返回星星坐标
+        return cc.v2(randX, randY);
+    },
+    spawnNewObstacle: function spawnNewObstacle() {
+        // 使用给定的模板在场景中生成一个新节点
+        var newObstacle = cc.instantiate(this.obstaclePrefab);
+
+        // 为星星设置一个随机位置
+        newObstacle.setPosition(this.getNewObstaclePosition());
+        newObstacle.getComponent('obstacle').game = this;
+
+        // 将新增的节点添加到 Canvas 节点下面
+        this.node.addChild(newObstacle);
+    },
+    getNewObstaclePosition: function getNewObstaclePosition() {
+        var randX = this.node.width / 2;
+        // 根据地平面位置和主角跳跃高度，随机得到一个星星的 y 坐标
+        var randY = -120;
+        //  this.groundY + Math.random() * this.player.getComponent('player').jumpHeight + 50;
+        // 根据屏幕宽度，随机得到一个星星 x 坐标
+        // var maxX = this.node.width;
+        // randX = (Math.random() - 0.5) * 2 * maxX;
+        // randX = this.node.width/2;
         // 返回星星坐标
         return cc.v2(randX, randY);
     },
