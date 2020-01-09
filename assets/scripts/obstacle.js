@@ -12,21 +12,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
         collisionRadius: 20,
     },
 
@@ -47,10 +32,6 @@ cc.Class({
             this.onPicked();
             return;
         }
-
-        // var opacityRatio = 1 - this.game.timer/this.game.starDuration;
-        // var minOpacity = 50;
-        // this.node.opacity = minOpacity + Math.floor(opacityRatio * (255 - minOpacity));
     },
     move: function () {
 
@@ -78,8 +59,6 @@ cc.Class({
         var playerPos = this.game.player.getPosition();
         // 根据两点位置计算两点之间距离
         var dist = this.node.position.sub(playerPos).mag();
-        console.log(dist)
-
         return dist;
     },
 

@@ -14,21 +14,6 @@ cc.Class({
     properties: {
         // 星星和主角之间的距离小于这个数值时，就会完成收集
         pickRadius: 0,
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
         speed: 100
     },
 
